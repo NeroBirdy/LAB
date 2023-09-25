@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h2>Фигура</h2>
+    <div class = "first">
+        <textarea readonly name="" id="target" cols="30" rows="10" style = "resize: none; border: 0; outline: 0;"></textarea>
+        <button onclick = "cover()">Запуск</button>
+    </div>
+    <hr>
+    <h2>Массив</h2>
+    <div class="two">
+        <label for="">Введите массив, через запятые</label>
+        <input type="text" id = "inp_2">
+        <button onclick = "two()">Проверить на четность</button>
+        <h3 id = "check_two"></h3>
+    </div>
+    <hr>
+    <div class="four">
+        <h2>Сколько грузовиков</h2>
+        <input type="number" name="" id="inp_4">
+        <button onclick = "four()">Узнать</button>
+    </div>
+    <hr>
+    <div class="five">
+        <h2>Количество двоек</h2>
+        <label for="">Введите число</label>
+        <input type="number" name="" id="inp_5">
+        <button onclick="five()">Посчитать</button>
+    </div>
+    <hr>
+    <div class="six">
+        <h2>Строки</h2>
+        <input type="text" name="" id="first">
+        <input type="text" id="second">
+        <button onclick="six()">Проверить</button>
+    </div>
+    <hr>
+    <div class = "seven" style = "display: flex;">
+        <div>
+            <h2 id = "pr">Введите количество жизней</h2>
+            <input type="number" id = "inp">
+            <button id = "start" onclick="seven()" style = "display: inline">Начать</button> 
+            <button id = "continue"onclick="check()" style = "display: none">Следующий</button>
+        </div>
+        <div style = "display: inline; margin-top: 10px; margin-left: 20px;">
+            <h4 >Жизни</h4> 
+            <p id = "life"></p>
+        </div>
+    </div>
+</body>
+<script src = "script.js"></script>
+</html>
