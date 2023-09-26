@@ -1,0 +1,16 @@
+.inp{
+    display: flex;
+    flex-direction: column;
+    margin-right: 10px;
+}
+
+.one{
+    display: flex; 
+    flex-direction: row;
+}
+
+.one_b{
+    margin-top: auto;
+    height: 25px;
+    margin-right: 10px;
+}
