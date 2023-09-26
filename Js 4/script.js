@@ -107,20 +107,46 @@ function four()
 function range(a,b,c)
 {
     let arr = [];
-    for(let i = a; i <= b; i++)
+    if (c > 0)
     {
-        if (i != c)
+        for(let i = a; i <= b; i+=c)
+        {
             arr.push(i);
+        } 
     }
+    else
+    {
+        for(let i = a; i >= b; i+=c)
+        {
+            arr.push(i);
+        } 
+    }
+    
     return arr;
 }
 
 function five()
 {
-    let a = document.getElementById("five_one").value;
-    let b = document.getElementById("five_two").value;
+    let a = Number(document.getElementById("five_one").value);
+    let b = Number(document.getElementById("five_two").value);
     let c = document.getElementById("five_three").value;
-    alert(range(a,b,c));
+    if (a == 0 || b == 0)
+    {
+        alert("Вы что-то не ввели");
+        return;
+    }
+    if (c == "")
+        c = 1;
+    else if (c == '0')
+    {
+        alert("Пусто");
+        return;
+    }
+    let arr = range(a,b,Number(c));
+    if (arr.length == 0)
+        alert("Пусто");
+    else
+        alert(arr);
 }
 
 function filt(ob)
@@ -134,7 +160,7 @@ function filt(ob)
         let fl4 = true;
         if (ob.name != "")
         {
-            if (ob.name == i.name)
+            if (ob.name != i.name)
                 fl1 = false;
         }
         if (ob.color != "")
