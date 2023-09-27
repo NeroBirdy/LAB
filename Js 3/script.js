@@ -187,6 +187,11 @@ function seven()
         return;
     }
     life = document.getElementById("inp").value;
+    if (life <= 0)
+    {
+        alert("Количество жизней не может быть отрицательным или равно нулю");
+        return;
+    }
     document.getElementById("life").textContent = life;
     document.getElementById("start").style.display = "none";
     document.getElementById("continue").style.display = "inline";
