@@ -64,18 +64,35 @@ function check()
 function cover()
 {
     let s = "";
-    for(let i = 0; i < 9; i++)
+    let h = 5;
+    let w = 4;
+    for(let i = 0; i < h; i++)
     {
-        s += "#";
-        if (i != 0 && i != 8)
+        for(let j = i; j >= 0;j--)
         {
-            if (i == 2 || i == 6)
-                s += "0";
-            else if (i == 3 || i == 5)
-                s += "00";
-            else if (i == 4)
-                s += "000";
-            s += "#";
+            if (j == 0 || j == i)
+            {
+                s+="#";
+            }
+            else
+            {
+                s+="0";
+            }
+        }
+        s+="\n";
+    }
+    for(let i = 0; i < h; i++)
+    {
+        for(let j = i; j < w;j++)
+        {
+            if (j == i || j == w - 1)
+            {
+                s+="#";
+            }
+            else
+            {
+                s+="0";
+            }
         }
         s+="\n";
     }
