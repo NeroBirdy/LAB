@@ -7,7 +7,7 @@ let cats = [
     {name:"Katya", color: "Orange", sex: "F", age: 6}
 ];
 
-let arr = [1,2,3,4,5,6];
+let arr = [];
 
 function add()
 {
@@ -34,6 +34,11 @@ function one()
 function two()
 {
     let place = document.getElementById("two");
+    if(place.childNodes.length == 4)
+    {
+        alert("Уже вывели")
+        return;
+    } 
     let table = document.createElement("table");
 
     let headers = document.createElement("tr");
@@ -70,24 +75,35 @@ function two()
 
 function sum_3(i,s)
 {
-    if (i == 5)
+    if (i == arr.length - 1)
         return s;
     i++;
     return sum_3(i,s * arr[i]);
 }
 
 function three()
-{
+{   
+    arr = document.getElementById("inp_3").value.replace(/ /g,'').replace(/,{2,}/g,',').split(",");
+    if(arr[0] == '')
+    {
+        arr.splice(0,1)
+    }
+    if(arr[arr.length - 1] == '')
+    {
+        arr.splice(arr.length - 1,1)
+    }
+    console.log(arr);
+    document.getElementById("inp_3").value = arr;
     alert(sum_3(0,1));
 }
 
 function sum_4(arr_,i)
 {
-    if (i == 6)
+    if (i == arr.length)
         return arr_;
     for(let j = i-1; j >= 0; j--)
     {
-        arr_[i] += arr[j];
+        arr_[i] = parseInt(arr_[i]) + parseInt(arr[j]);
     }
     i++;
     return sum_4(arr_,i);
@@ -95,19 +111,30 @@ function sum_4(arr_,i)
 
 function four()
 {
+    arr = document.getElementById("inp_4").value.replace(/ /g,'').replace(/,{2,}/g,',').split(",");
+    if(arr[0] == '')
+    {
+        arr.splice(0,1)
+    }
+    if(arr[arr.length - 1] == '')
+    {
+        arr.splice(arr.length - 1,1)
+    }
+    console.log(arr);
     let arr_ = [];
     for(let i = 0; i < arr.length; i++)
     {
         arr_[i] = arr[i];
     }
     arr_ = sum_4(arr_,0);
+    document.getElementById("inp_4").value = arr;
     alert(arr_);
 }
 
 function range(a,b,c)
 {
     let arr = [];
-    if (c > 0)
+    if (c > 0 && a < b)
     {
         for(let i = a; i <= b; i+=c)
         {
@@ -116,10 +143,20 @@ function range(a,b,c)
     }
     else
     {
-        for(let i = a; i >= b; i+=c)
+        if (a > b && c > 0)
         {
-            arr.push(i);
-        } 
+            for(let i = a; i >= b; i-=c)
+            {
+                arr.push(i);
+            } 
+        }
+        else
+        {
+            for(let i = a; i >= b; i+=c)
+            {
+                arr.push(i);
+            } 
+        }
     }
     
     return arr;
@@ -130,7 +167,7 @@ function five()
     let a = Number(document.getElementById("five_one").value);
     let b = Number(document.getElementById("five_two").value);
     let c = document.getElementById("five_three").value;
-    if (a == 0 || b == 0)
+    if (a == 0 && b == 0)
     {
         alert("Вы что-то не ввели");
         return;
