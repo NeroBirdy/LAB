@@ -13,7 +13,7 @@ function add()
 {
     let name = document.getElementById("one_name").value;
     let age = document.getElementById("one_age").value;
-    if (name == null || age == null)
+    if (name == "" || age == "")
     {
         alert("Вы что-то не вписали");
         return;
