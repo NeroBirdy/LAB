@@ -17,7 +17,23 @@ function add_el(el)
     {
         if (inp.value == "" || temp == "+" || temp == "-" || temp == "*" || temp == "/" || temp == ".")
             return;
-        inp.value += el;
+        let cnt = 0;
+        for (let i = inp.value.length - 1; i >= 0; i--)
+        {
+            if (inp.value[i] == "+" || inp.value[i] == "-"|| inp.value[i] == "*" || inp.value[i] == "/")
+                break;
+            else if (inp.value[i] == ".")
+                cnt++;
+        }
+        if (!cnt)
+            inp.value += el;
+    }
+    else if (inp.value.length == 1 & inp.value[0] == 0)
+    {
+        if (el == 1 || el == 2 || el == 3 || el == 4 || el == 5 || el == 6 || el == 7 || el == 8 || el == 9)
+        {
+            inp.value = el;
+        }
     }
     else
     {
