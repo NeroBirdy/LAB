@@ -1,0 +1,88 @@
+body {
+	margin: 0px;
+    /* overflow: hidden; */
+	background: #353336;
+}
+
+#game {
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+#game-canvas {
+	display: block;
+	border-radius: 5px;	
+}
+
+.game-header {
+	padding-top: 1vmin;
+	padding-bottom: 1vmin;
+
+	display: flex;
+	justify-content: space-between;
+}
+
+.canvas-wrapper {
+	background-color: #161618;
+	border-radius: 5px;
+	border: 10px solid #161618;
+	box-shadow: 0px 0px 40px 10px #161618;
+
+	background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg opacity='0.2'%3E%3Ccircle cx='8' cy='8' r='4' fill='%23525053'/%3E%3C/g%3E%3C/svg%3E%0A");
+}
+
+.draggable {
+    width: 100px;
+    height: 50px;
+    background-color: #98a8b3;
+    position: absolute;
+}
+
+.trail {
+    position: absolute;
+    height: 6px;
+    width: 6px;
+    border-radius: 50%;
+    background-color: #dff898; /* Цвет следа */
+    transition: transform 0.1s ease-out;
+}
+
+.seven {
+	display: flex;
+	flex-direction: row;
+}
+
+.seven > div {
+	width: 100px;
+	height: 100px;
+	border-radius: 50px;
+	background-color: red;
+	margin-left: 10px;
+}
+
+.sixCircle {
+	width: 100px;
+	height: 100px;
+	border-radius: 50px;
+	background-color: red;
+	margin-left: 10px;
+}
+
+.eight {
+	display: flex;
+	flex-direction: column;
+	width: 200px;
+}
+
+.e {
+	background-color: #dff898;
+}
+
+.score {
+	color:aliceblue;
+	font-size: 50px;
+}
