@@ -23,13 +23,16 @@ function add_el(el)
     {
         if (inp.value == "" || signNdot.includes(temp))
             return;
-        let cnt = 0;
+        let cnt = false;
         for (let i = inp.value.length - 1; i >= 0; i--)
         {
             if (sign.includes(inp.value[i]))
                 break;
             else if (inp.value[i] == ".")
-                cnt++;
+            {
+                cnt = true;
+                break;
+            }
         }
         if (!cnt)
             inp.value += el;
@@ -60,7 +63,7 @@ function add_el(el)
 function Eval()
 {
     regex =  new RegExp('/0');
-    regex1 = new RegExp('/0.[0-9]*[1-9]')
+    regex1 = new RegExp('/0.[0-9]*[1-9]');
     temp = inp.value[inp.value.length - 1];
         if (temp == "+" || temp == "-" || temp == "*" || temp == "/")
         {
