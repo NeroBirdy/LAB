@@ -58,9 +58,9 @@ function drawSnake() {
 
     snake.tails.forEach(function(el, index){
         if (index == 0) {
-			context.fillStyle = "#FA0556";
+			context.fillStyle = "#14b814";
 		} else {
-			context.fillStyle = "#A00034";
+			context.fillStyle = "#53ec53";
 		}
 
         context.fillRect(el.x, el.y, settings.sizeCell, settings.sizeCell);
@@ -127,18 +127,26 @@ function collisionBorder() {
 
 document.addEventListener("keydown", function (e) {
     if (e.code == "KeyW") {
+        if (snake.speedY === settings.sizeCell)
+            return;
         snake.speedY = -settings.sizeCell;
         snake.speedX = 0;
     }
     else if (e.code == "KeyA") {
+        if (snake.speedX === settings.sizeCell)
+            return;
         snake.speedX = -settings.sizeCell;
         snake.speedY = 0;
     }
     else if (e.code == "KeyD") {
+        if (snake.speedX === -settings.sizeCell)
+            return;
         snake.speedX = settings.sizeCell;
         snake.speedY = 0;
     }
     else if (e.code == "KeyS") {
+        if (snake.speedY === -settings.sizeCell)
+            return;
         snake.speedY = settings.sizeCell;
         snake.speedX = 0;
     }
