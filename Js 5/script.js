@@ -150,8 +150,8 @@ document.addEventListener("keydown", function (e) {
         snake.speedY = settings.sizeCell;
         snake.speedX = 0;
     }
-    
-});
+
+});  
 
 document.addEventListener('DOMContentLoaded', function () {
     const draggable = document.getElementById('draggable');
