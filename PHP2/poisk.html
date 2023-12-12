@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p><select name="browser" id="browserSelect">
+        <option disabled selected>Выберите браузер</option>
+        <option value="https://yandex.ru">Yandex</option>
+        <option value="https://google.com">Google</option>
+        <option value="https://mail.ru">Mail.ru</option>
+        <option value="https://bing.com">Bing</option>
+        <option value="https://duckduckgo.com">DuckDuckGo</option>
+        </select></p>
+       <p><input id = "searchButton" type="submit" value="Отправить" ></p>
+       <h3>Запрос</h3>
+       <input id = "searchQuery" type="text">
+</body>
+<script>
+    document.getElementById('searchButton').addEventListener('click', function() {
+      let query = document.getElementById('searchQuery').value;
+      let selectElement = document.getElementById('browserSelect');
+      let browser = selectElement.value;
+      if (!browser)
+      {
+        alert("Вы не выбрали поисковую систему");
+        return;
+      }
+      let url = `/redirect?url=${browser}`;
+      if (query)
+      {
+        url+=`&query=${query}`;
+      }
+      window.location.href = url;
+    });
+    </script>
+</html>
+
+<!-- <h3>Запрос</h3>
+<a href="/redirect?url=https://yandex.ru&query=какая погода сегодня">ya</a>
+<a href="/redirect?url=https://google.com">google</a>
+<a href="/redirect?url=https://mail.ru">mail</a> -->
