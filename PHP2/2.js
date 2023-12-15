@@ -2,12 +2,20 @@ const express = require('express');
 const app = express();
 const path = require('path');
 
+app.use(express.urlencoded({ extended: true })); // Парсинг данных из формы
+app.use(express.json()); // Парсинг JSON данных
+
 app.get('/', (req, res) => {
     res.sendFile(path.resolve(__dirname,'poisk.html'));
 });
 
-app.get('/redirect', (req, res) => {
-    let { url, query } = req.query;
+app.post('/redirect', (req, res) => {
+    let { url, query } = req.body;
+    if (!url)
+    {
+        res.send('Вы не выбрали поисковую систему');
+        return;
+    }
     if (query)
     {
         if (url == "https://yandex.ru")
@@ -28,7 +36,7 @@ app.get('/redirect', (req, res) => {
         }
     }
     console.log(url);
-    return res.redirect(url);
+    res.redirect(url);
 });
 
 app.listen(3000, () => {
