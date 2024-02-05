@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Фев 04 2024 г., 19:13
+-- Время создания: Фев 05 2024 г., 17:17
 -- Версия сервера: 8.0.30
 -- Версия PHP: 8.1.9
 
@@ -18,34 +18,40 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- База данных: `php4`
+-- База данных: `php5`
 --
 
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `images`
+-- Структура таблицы `comments`
 --
 
-CREATE TABLE `images` (
+CREATE TABLE `comments` (
   `id` int NOT NULL,
-  `path` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
+  `user` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `comment` varchar(255) COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Дамп данных таблицы `images`
+-- Индексы сохранённых таблиц
 --
 
-INSERT INTO `images` (`id`, `path`) VALUES
-(0, 'pictures\\gal\\dr1.jpg'),
-(1, 'pictures\\gal\\dr2.jpg'),
-(2, 'pictures\\gal\\dr3.jpg'),
-(3, 'pictures\\gal\\dr4.jpg'),
-(4, 'pictures\\gal\\dr5.png'),
-(5, 'pictures\\gal\\dr6.jpg'),
-(6, 'pictures\\gal\\dr7.png'),
-(7, 'pictures\\gal\\dr8.jpg'),
-(8, 'pictures\\gal\\dr9.jpg');
+--
+-- Индексы таблицы `comments`
+--
+ALTER TABLE `comments`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT для сохранённых таблиц
+--
+
+--
+-- AUTO_INCREMENT для таблицы `comments`
+--
+ALTER TABLE `comments`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
