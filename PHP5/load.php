@@ -1,9 +1,7 @@
 <?php
 $user = $_POST['user'];
 $comment = $_POST['comment'];
-if ($user === null or $comment === null) {
-    die ("Что-то пустое");
-}
+if ($user !== "" and $comment !== "") {
 
 $link = mysqli_connect("127.0.0.1","root","","php5");
 if ($link === false) {
@@ -28,6 +26,7 @@ if ($stmt)
 }
 
 mysqli_close($link);
+}
 
 header("Location: index.php");
 

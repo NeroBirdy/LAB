@@ -1,6 +1,6 @@
 <?php
 
-if (isset($_FILES['image'])) {
+if (!empty($_FILES['image']['name'])) {
     $file = $_FILES['image'];
     $filename = $file['name'];
     $path_info = pathinfo($filename);
@@ -31,12 +31,12 @@ if (isset($_FILES['image'])) {
     } else {
         echo "Ошибка при подготовке запроса: " . mysqli_error($link);
     }
+
+    mysqli_close($link);
 }
 else {
     echo "Ошибка загрузки файла";
 }
-
-mysqli_close($link);
 
 header("Location: index.php");
 
