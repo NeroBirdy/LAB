@@ -32,20 +32,9 @@ $stmt = mysqli_query($link,$query);
             </div>
         </div>
     </div>
-    <footer>
-        <div class="upper">
-            <div class = "footer_area">
-                <img src="pictures/back/stik.png" alt="" class = "stik">
-            </div>
-            <div class = "footer_info">
-                <p>Зорин Владислав</p>
-                <p>+7 (950) 522-89-97</p>
-                <p>31231@gmail.com</p>
-            </div>
-        </div>
-        <div class="comments_area">
+    <div class="comments_area">
             <div class="comments">
-            <form action="load.php" method="post">
+            <form action="load.php" method="post" class = "form">
                 <input type="text" name="user" placeholder="Пользователь">
                 <input type="text" name="comment" placeholder="Комментарий">
                 <button type="submit">Отправить</button>
@@ -55,11 +44,22 @@ $stmt = mysqli_query($link,$query);
                 $user = $result['user'];
                 $comment = $result['comment'];
             ?>
-            <label><b><?php echo $user ?></b> 
+            <label class = "comment"><p class = "user"><?php echo $user ?></b> 
             <p><?php echo $comment ?></p></label>
             <?php
             }
             ?>
+            </div>
+        </div>
+    <footer>
+        <div class="upper">
+            <div class = "footer_area">
+                <img src="pictures/back/stik.png" alt="" class = "stik">
+            </div>
+            <div class = "footer_info">
+                <p>Зорин Владислав</p>
+                <p>+7 (950) 522-89-97</p>
+                <p>31231@gmail.com</p>
             </div>
         </div>
     </footer>
