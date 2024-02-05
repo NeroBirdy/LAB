@@ -6,6 +6,9 @@ if ($user === null or $comment === null) {
 }
 
 $link = mysqli_connect("127.0.0.1","root","","php5");
+if ($link === false) {
+    die("Ошибка подключения" . mysqli_connect_error());
+}
 $query = "INSERT INTO comments (user,comment) VALUES (?,?)";
 
 $stmt = mysqli_prepare($link,$query);
