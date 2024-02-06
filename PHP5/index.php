@@ -44,8 +44,8 @@ $stmt = mysqli_query($link,$query);
                 $user = $result['user'];
                 $comment = $result['comment'];
             ?>
-            <label class = "comment"><p class = "user"><?php echo $user ?></b> 
-            <p><?php echo $comment ?></p></label>
+            <div class = "comment"><p class = "user"><?php echo $user ?></b> 
+            <p><?php echo $comment ?></p></div>
             <?php
             }
             ?>
