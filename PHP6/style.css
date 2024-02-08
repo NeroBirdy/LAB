@@ -50,6 +50,11 @@ footer{
     font-weight: bold;
 }
 
+.date{
+    margin-left: 5px;
+    font-weight: bold;
+}
+
 .change_header{
     margin-bottom: 0;
 }
@@ -68,8 +73,6 @@ footer{
 
 .comment_info{
     margin: auto;
-    margin-left: 45%;
-
 }
 
 .edit{

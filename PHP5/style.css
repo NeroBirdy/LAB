@@ -50,6 +50,11 @@ footer{
     font-weight: bold;
 }
 
+.date{
+    margin-left: 5px;
+    font-weight: bold;
+}
+
 .comment{
     background-color: rgba(206, 99, 169, 0.37);
     border-radius: 20px 20px 20px 20px;
@@ -57,6 +62,9 @@ footer{
     margin-top: 10px;
     color:rgb(17, 31, 51);
     text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .comments{
@@ -71,6 +79,10 @@ footer{
     display: flex;
     justify-content: center;
     text-align: center;
+}
+
+.comment_info{
+    margin: auto;
 }
 
 body{
