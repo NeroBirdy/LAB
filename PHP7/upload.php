@@ -1,6 +1,5 @@
 <?php
-
-if (!empty($_FILES['image']['name'])) {
+if (!$_FILES['image']['error']) {
     $file = $_FILES['image'];
     $filename = $file['name'];
     $path_info = pathinfo($filename);
@@ -38,6 +37,6 @@ else {
     echo "Ошибка загрузки файла";
 }
 
-header("Location: index.php");
+header("Location: gallary.php");
 
 ?>
