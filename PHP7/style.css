@@ -235,7 +235,7 @@ button {
     margin-left: auto;
 }
 
-.auth {
+.auth,.register {
     display: none;
     position: fixed;
     z-index: 1;
@@ -247,66 +247,39 @@ button {
     background-color: rgba(0, 0, 0, 0.4);
 }
 
-.auth-content{
+.auth-content,.register-content{
     background-color: rgb(212, 144, 187);
     margin: 10% auto;
     margin-top: 20%;
     padding: 20px;
     border: 1px solid #888;
     border-radius: 20px;
-    width: 10%;
-    height: 30%;
+    width: 20%;
+    height: 40%;
     justify-content: center;
+    text-align: center;
+    align-items: center;
 }
 
-.auth_p {
-    font-size: 14px;
+.auth_p,.register_p {
+    font-size: 17px;
     margin-bottom: 5px;
 }
 
-.authButton {
+.authButton,.registerButton {
     background-color: rgb(139, 83, 161);
-    width: 90%;
+    width: 80%;
     height: 30px;
     border-radius: 20px;
-    margin-top: 7px;
+    margin-top: 15px;
 }
 
-.register {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.4);
+.auth_input {
+    width: 50%;
 }
 
-.register-content{
-    background-color: rgb(212, 144, 187);
-    margin: 10% auto;
-    margin-top: 20%;
-    padding: 20px;
-    border: 1px solid #888;
-    border-radius: 20px;
-    width: 10%;
-    height: 30%;
-    justify-content: center;
-}
-
-.register_p {
-    font-size: 14px;
-    margin-bottom: 5px;
-}
-
-.registerButton {
-    background-color: rgb(139, 83, 161);
-    width: 90%;
-    height: 30px;
-    border-radius: 20px;
-    margin-top: 7px;
+.welcome {
+    font-size: 18px;
 }
 
 .link_area {
@@ -428,22 +401,19 @@ textarea {
     height: 8%;
 }
 
-.close {
-    color: #aaa;
+.close,.register_close,.auth_close {
+    color: rgb(139, 83, 161);
     float: right;
     font-size: 28px;
     font-weight: bold;
 }
 
-.close:hover,
-.close:focus {
+.close:hover,.register_close:hover,.auth_close:hover,
+.close:focus,.register_close:focus,.auth_close:focus {
     color: black;
     text-decoration: none;
     cursor: pointer;
 }
-
-
-
 
 @media only screen and (max-width:700px) {
     .first_pic {
