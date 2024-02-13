@@ -47,17 +47,17 @@ $monthes = ["December", "January", "February", "March", "April", "May", "June", 
                         } ?>>
         <div class="auth-content">
             <span class="auth_close">&times;</span>
-            <p class = "welcome">Добро пожаловать</p><br>
+            <p class="welcome">Добро пожаловать</p><br>
             <form action="signup.php" method="post" class="auth_form">
                 <p class="auth_p">Логин</p>
-                <input class = "auth_input" type="text" name="login" placeholder="Логин" value='<?php if (isset($_SESSION['form'])) {
-                                                                                echo $_SESSION['form']['login'];
-                                                                            } ?>'>
+                <input class="auth_input" type="text" name="login" placeholder="Логин" value='<?php if (isset($_SESSION['form'])) {
+                                                                                                    echo $_SESSION['form']['login'];
+                                                                                                } ?>'>
                 <p class="auth_p">Пароль</p>
-                <input class = "auth_input" type="text" name="password" placeholder="Пароль" value='<?php if (isset($_SESSION['form'])) {
-                                                                                    echo $_SESSION['form']['password'];
-                                                                                    unset($_SESSION['form']);
-                                                                                } ?>'>
+                <input class="auth_input" type="text" name="password" placeholder="Пароль" value='<?php if (isset($_SESSION['form'])) {
+                                                                                                        echo $_SESSION['form']['password'];
+                                                                                                        unset($_SESSION['form']);
+                                                                                                    } ?>'>
                 <button class="authButton">Войти</button>
                 <?php if (isset($_SESSION['message']) && $_SESSION['message'] === 'Неправильный логин или пароль') {
                 ?>
@@ -73,17 +73,17 @@ $monthes = ["December", "January", "February", "March", "April", "May", "June", 
                             } ?>>
         <div class="register-content">
             <span class="register_close">&times;</span>
-            <p class = "welcome">Добро пожаловать</p><br>
+            <p class="welcome">Добро пожаловать</p><br>
             <form action="register.php" method="post" class="register_form">
                 <p class="register_p">Логин</p>
-                <input class = "auth_input" type="text" name="login" placeholder="Логин" value='<?php if (isset($_SESSION['form'])) {
-                                                                                echo $_SESSION['form']['login'];
-                                                                            } ?>'>
+                <input class="auth_input" type="text" name="login" placeholder="Логин" value='<?php if (isset($_SESSION['form'])) {
+                                                                                                    echo $_SESSION['form']['login'];
+                                                                                                } ?>'>
                 <p class="register_p">Пароль</p>
-                <input class = "auth_input" type="text" name="password" placeholder="Пароль" value='<?php if (isset($_SESSION['form'])) {
-                                                                                    echo $_SESSION['form']['password'];
-                                                                                    unset($_SESSION['form']);
-                                                                                } ?>'>
+                <input class="auth_input" type="text" name="password" placeholder="Пароль" value='<?php if (isset($_SESSION['form'])) {
+                                                                                                        echo $_SESSION['form']['password'];
+                                                                                                        unset($_SESSION['form']);
+                                                                                                    } ?>'>
                 <button class="registerButton">Зарегистироваться</button>
                 <?php if (isset($_SESSION['message']) && $_SESSION['message'] === 'Логин уже занят') {
                 ?>
@@ -109,6 +109,17 @@ $monthes = ["December", "January", "February", "March", "April", "May", "June", 
     </div>
     <div class="comments_area">
         <div class="comments">
+            <div class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <p class="change_header">Изменить комментарий: </p><br>
+                    <form action="edit.php" method="post">
+                        <input type="hidden" name="id" value="">
+                        <input type="text" name="comment" value="">
+                        <button type="submit">Сохранить</button>
+                    </form>
+                </div>
+            </div>
             <?php
             if ($_SESSION) {
             ?>
@@ -156,18 +167,6 @@ $monthes = ["December", "January", "February", "March", "April", "May", "June", 
                             }
                             ?>
                         </div>
-                        <div class="modal" modal-id="<?php echo $id ?>">
-                            <div class="modal-content">
-                                <span class="close" id="<?php echo $id ?>">&times;</span>
-                                <p class="change_header">Изменить комментарий: </p><br>
-                                <form action="edit.php" method="post">
-                                    <input type="hidden" name="id" value="<?php echo $id ?>">
-                                    <input type="text" name="user" value="<?php echo $user ?>">
-                                    <input type="text" name="comment" value="<?php echo $comment ?>">
-                                    <button type="submit">Сохранить</button>
-                                </form>
-                            </div>
-                        </div>
                     <?php
                     }
                     ?>
@@ -192,6 +191,15 @@ $monthes = ["December", "January", "February", "March", "April", "May", "June", 
 </body>
 
 <script>
+    let modal = document.querySelector(".modal");
+
+    function open() {
+        modal.style.display = "block";
+    }
+
+    function close() {
+        modal.style.display = "none";
+    }
     let registerAuth = document.querySelector(".register_close");
     if (registerAuth) {
         registerAuth.addEventListener('click', function() {
@@ -220,34 +228,26 @@ $monthes = ["December", "January", "February", "March", "April", "May", "June", 
         });
     }
 
-
     let openButtons = document.querySelectorAll('.edit');
 
     openButtons.forEach(function(button) {
         button.addEventListener('click', function() {
+            let parent = button.parentElement.parentElement;
+            let comment = parent.childNodes[3].childNodes[2].innerHTML;
             let id = button.getAttribute('id');
-            open(id);
+            document.querySelector('input[type = "hidden"][name = "id"]').value = id;
+            document.querySelector('input[type = "text"][name = "comment"]').value = comment;
+            open();
         });
     });
-
-    function open(id) {
-        let modal = document.querySelector('.modal[modal-id="' + id + '"]');
-        modal.style.display = "block";
-    }
 
     let closeButtons = document.querySelectorAll('.close');
 
     closeButtons.forEach(function(button) {
         button.addEventListener('click', function() {
-            let id = button.getAttribute('id');
-            close(id);
+            close();
         });
     });
-
-    function close(id) {
-        let modal = document.querySelector('.modal[modal-id="' + id + '"]');
-        modal.style.display = "none";
-    }
 </script>
 
 </html>

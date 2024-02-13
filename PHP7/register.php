@@ -15,6 +15,7 @@ if(mysqli_num_rows($check))
 {
     $_SESSION['message'] = "Логин уже занят";
     $_SESSION['form'] = ['login' => $login, 'password' => $_POST['password']];
+    print_r($_SESSION['form']);
     header('Location: index.php');
 }
 
