@@ -42,24 +42,29 @@ $monthes = ["December", "January", "February", "March", "April", "May", "June", 
         <?php
         }  ?>
     </header>
-    <div class="auth" <?php if (isset($_SESSION['message']) && $_SESSION['message'] === 'Неправильный логин или пароль') {
+    <div class="auth" <?php if (isset($_SESSION['message']) && ($_SESSION['message'] === 'Неправильный логин или пароль' or $_SESSION['message'] === "Вы что-то не заполнили")) {
                             echo "style = 'display: block'";
                         } ?>>
         <div class="auth-content">
             <span class="auth_close">&times;</span>
             <p class="welcome">Добро пожаловать</p><br>
-            <form action="signup.php" method="post" class="auth_form">
+            <form action="signin.php" method="post" class="auth_form">
                 <p class="auth_p">Логин</p>
-                <input class="auth_input" type="text" name="login" placeholder="Логин" value='<?php if (isset($_SESSION['form'])) {
-                                                                                                    echo $_SESSION['form']['login'];
+                <input class="auth_input" type="text" name="login" placeholder="Логин" value='<?php if (isset($_SESSION['authForm'])) {
+                                                                                                    if (!empty($_SESSION['authForm']['login'])) {
+                                                                                                        echo $_SESSION['authForm']['login'];
+                                                                                                    }
                                                                                                 } ?>'>
                 <p class="auth_p">Пароль</p>
-                <input class="auth_input" type="text" name="password" placeholder="Пароль" value='<?php if (isset($_SESSION['form'])) {
-                                                                                                        echo $_SESSION['form']['password'];
-                                                                                                        unset($_SESSION['form']);
+                <input class="auth_input" type="text" name="password" placeholder="Пароль" value='<?php if (isset($_SESSION['authForm'])) {
+                                                                                                        if (!empty($_SESSION['authForm']['password'])) {
+                                                                                                            echo $_SESSION['authForm']['password'];
+                                                                                                            unset($_SESSION['authForm']);
+                                                                                                        }
+                                                                                                        
                                                                                                     } ?>'>
                 <button class="authButton">Войти</button>
-                <?php if (isset($_SESSION['message']) && $_SESSION['message'] === 'Неправильный логин или пароль') {
+                <?php if (isset($_SESSION['message']) && ($_SESSION['message'] === 'Неправильный логин или пароль' or $_SESSION['message'] === "Вы что-то не заполнили")) {
                 ?>
                     <p><?php echo $_SESSION['message'] ?></p>
                 <?php
@@ -68,7 +73,7 @@ $monthes = ["December", "January", "February", "March", "April", "May", "June", 
             </form>
         </div>
     </div>
-    <div class="register" <?php if (isset($_SESSION['message']) && $_SESSION['message'] === 'Логин уже занят') {
+    <div class="register" <?php if (isset($_SESSION['message']) && ($_SESSION['message'] === 'Логин уже занят' or $_SESSION['message'] === "Ошибка регистрации")) {
                                 echo "style = 'display: block'";
                             } ?>>
         <div class="register-content">
@@ -76,16 +81,21 @@ $monthes = ["December", "January", "February", "March", "April", "May", "June", 
             <p class="welcome">Добро пожаловать</p><br>
             <form action="register.php" method="post" class="register_form">
                 <p class="register_p">Логин</p>
-                <input class="auth_input" type="text" name="login" placeholder="Логин" value='<?php if (isset($_SESSION['form'])) {
-                                                                                                    echo $_SESSION['form']['login'];
+                <input class="auth_input" type="text" name="login" placeholder="Логин" value='<?php if (isset($_SESSION['regForm'])) {
+                                                                                                    if (!empty($_SESSION['regForm']['login'])) {
+                                                                                                        echo $_SESSION['regForm']['login'];
+                                                                                                    }
                                                                                                 } ?>'>
                 <p class="register_p">Пароль</p>
-                <input class="auth_input" type="text" name="password" placeholder="Пароль" value='<?php if (isset($_SESSION['form'])) {
-                                                                                                        echo $_SESSION['form']['password'];
-                                                                                                        unset($_SESSION['form']);
+                <input class="auth_input" type="text" name="password" placeholder="Пароль" value='<?php if (isset($_SESSION['regForm'])) {
+                                                                                                         if (!empty($_SESSION['regForm']['password'])) {
+                                                                                                            echo $_SESSION['regForm']['password'];
+                                                                                                            unset($_SESSION['regForm']);
+                                                                                                        }
+                                                                                                        
                                                                                                     } ?>'>
                 <button class="registerButton">Зарегистироваться</button>
-                <?php if (isset($_SESSION['message']) && $_SESSION['message'] === 'Логин уже занят') {
+                <?php if (isset($_SESSION['message']) && ($_SESSION['message'] === 'Логин уже занят' or $_SESSION['message'] === "Ошибка регистрации")) {
                 ?>
                     <p><?php echo $_SESSION['message'] ?></p>
                 <?php
