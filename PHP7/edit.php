@@ -2,10 +2,15 @@
 session_start();
 $id = $_POST['id'];
 $user = $_SESSION['user']['login'];
-$comment = $_POST['comment'];
+$comment = trim($_POST['comment']);
 
 $link = mysqli_connect("127.0.0.1", "root", "", "php5");
-if (!empty($id) and !empty($user) and !empty($comment)) {
+if (!empty($id) and !empty($comment)) {
+    $comment = preg_replace('/\s+/', ' ', $comment);
+    if ($comment === ' ') {
+        header("Location: index.php");
+        die();
+    }
     $check = mysqli_query($link, "SELECT comment FROM comments WHERE user = '$user' and id ='$id'");
     if (mysqli_num_rows($check) || $user == 'BirdyNero') {
         $query = "UPDATE comments SET user = ?, comment = ? WHERE id = ?";
@@ -30,3 +35,6 @@ if (!empty($id) and !empty($user) and !empty($comment)) {
 }
 
 header("Location: index.php");
+
+
+

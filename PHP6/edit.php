@@ -1,11 +1,18 @@
 <?php
 
 $id = $_POST['id'];
-$user = $_POST['user'];
-$comment = $_POST['comment'];
+$user = trim($_POST['user']);
+$comment = trim($_POST['comment']);
 
 
 if (!empty($id) and !empty($user) and !empty($comment)) {
+    $user = preg_replace('/\s+/', ' ', $user);
+    $comment = preg_replace('/\s+/', ' ', $comment);
+    if ($user === ' ' or $comment === ' ') {
+        header("Location: index.php");
+        die();
+    }
+
     $link = mysqli_connect("127.0.0.1", "root", "", "php5");
     $query = "UPDATE comments SET user = ?, comment = ? WHERE id = ?";
 
